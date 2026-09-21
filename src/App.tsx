@@ -1,17 +1,10 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { 
   HeartPulse, 
-  FileSpreadsheet, 
-  RefreshCw, 
-  AlertCircle,
-  ExternalLink,
-  ShieldCheck,
-  TrendingUp,
-  Activity,
-  Table as TableIcon
+  AlertCircle
 } from 'lucide-react';
 import { HealthRecord, FilterState } from './types';
-import { fetchHealthRecords, GOOGLE_SHEET_ID, SHEET_WEB_LINK } from './services/sheetService';
+import { fetchHealthRecords, GOOGLE_SHEET_ID } from './services/sheetService';
 import { filterRecords, computeSummaryStats } from './utils/calculations';
 import { Header } from './components/Header';
 import { FilterBar } from './components/FilterBar';
@@ -185,21 +178,8 @@ export default function App() {
             <span className="font-semibold text-slate-700">แดชบอร์ดรายงานสรุปผลการคัดกรองสุขภาพ</span>
           </div>
 
-          <div className="flex items-center gap-2 text-[11px] text-slate-400">
-            <span>เชื่อมโยงข้อมูล Google Sheet ID:</span>
-            <a
-              href={SHEET_WEB_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-rose-600 hover:text-rose-700 underline inline-flex items-center gap-1"
-            >
-              <span>{GOOGLE_SHEET_ID}</span>
-              <ExternalLink className="w-3 h-3" />
-            </a>
-          </div>
-
           <div className="text-[11px] text-slate-400">
-            ปรับปรุงล่าสุด: <span className="font-mono text-slate-600">{lastUpdated || '-'}</span> ({source || 'Google Sheets'})
+            ปรับปรุงล่าสุด: <span className="font-mono text-slate-600">{lastUpdated || '-'}</span> ({source || 'ระบบ'})
           </div>
         </div>
       </footer>
